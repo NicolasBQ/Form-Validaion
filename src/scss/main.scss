@@ -1,5 +1,6 @@
 @import './config';
 @import './form';
+@import './media';
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -8,40 +9,73 @@ body {
 
 .main {
     margin: 0 auto;
-    padding: 3rem 0;
+    padding: 3rem 0 1rem 0;
     width: 80%;
-    height: 100vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+}
+
+.white-text {
+    color: $white-color;
+}
+
+.font-600 {
+    font-weight: 600;
+}
+
+.radius-12 {
+    border-radius: 0.5rem;
+}
+
+.text-center {
+    text-align: center
+}
+
+.width-100 {
+    width: 100%;
 }
 
 .label-text {
-    color: $label-color;
-    display: block;
-    font-size: .7rem;
-    line-height: 1.5;
+    @include label-text;
     margin-top: 1rem;
 }
 
 .information {
-    color: $white-color;
-    text-align: center;
     margin-bottom: 3rem;
 
     &__title {
         margin-bottom: 1rem;
     }
+
+    &__text {
+        font-weight: 500;
+    }
+
+
 }
 
 .promotion-container {
-    width: 100%;
-    color: $white-color;
+    max-width: 40rem;
     background-color: $accent-color;
     padding: 1rem;
-    text-align: center;
-    border-radius: 0.5rem;
     box-shadow: 0 8px 0 rgba(#000000, 0.15);
     margin-bottom: 2rem;
+}
+
+.footer {
+    color: $white-color;
+    &__text {
+        font-size: 1rem;
+    }
+
+    &__link {
+        color: inherit;
+    }
+
+    &__link:hover {
+        text-decoration: none;
+        color: $accent-color;
+    }
 }

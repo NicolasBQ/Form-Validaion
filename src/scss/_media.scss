@@ -1,0 +1,27 @@
+@include for-laptop-up {
+    .main {
+        display: flex;
+        gap: 10%;
+    }
+
+    .information {
+        width: 45%;
+        align-self: center;
+
+         & > * {
+            text-align: left;
+         }
+
+         &__title {
+             font-size: 3rem;
+         }
+
+         &__text {
+             width: 90%;
+         }
+    }
+
+    .content {
+        width: 45%;
+    }
+}

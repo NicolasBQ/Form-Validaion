@@ -20,3 +20,10 @@ $white-color:#fff;
         @content;
     }
 }
+
+@mixin label-text {
+    color: $label-color;
+    display: block;
+    font-size: .7rem;
+    line-height: 1.5;
+}
