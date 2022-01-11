@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
     <title>Form Validation</title>
 </head>
 <body>
-    <h1>GUN</h1>
+    <main class="main">
+        <section class="information">
+            <h1 class="information__title">Learn to code by watching others</h1>
+            <p class="information__text">
+                See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how develpers think is invaluable
+            </p>
+        </section>
+
+        <section class="content">
+            <div class="promotion-container">
+                <p>
+                    <b>Try it free 7 days</b> then $20/mo. thereafter
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form class="form">
+                    <span class="label-text">Required *</span>
+                    <input type="text" id="text" required placeholder="Full Name" class="form__input">
+                    <span class="label-text">Required *</span>
+                    <input type="email" required placeholder="Email" class="form__input">
+                    <span class="label-text">Required *</span>
+                    <input type="password" required placeholder="Password" class="form__input">
+                    <div class="form__password--indications">
+                        <span class="form___password--indications-uppercase">At least ONE uppercase letter</span>
+                        <span class="form___password--indications-lowercase">At least ONE lowercase letter</span>
+                        <span class="form___password--indications-number">At least ONE number</span>
+                        <span class="form___password--indications-characters">At least 10 characters long</span>
+                    </div>
+                    <span class="label-text">Required *</span>
+                    <input type="password" required placeholder="Passsword Confirmation" class="form__input">
+                    <button type="submit" class="form__submit">CLAIM YOUR FREE TRIAL!</button>
+                    <p class="form__terms label-text">
+                        By clicking the button, you are agreeing to out <span>Terms and Services</span>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
 <script defer src="main.js"></script></body>
 </html>

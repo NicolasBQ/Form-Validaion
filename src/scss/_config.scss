@@ -1,0 +1,22 @@
+//Colors
+$primary-color:#FF7A7A;
+$accent-color:#5D54A3;
+$success-color:#38CC8C; 
+$label-color:#B9B6D3;
+$placeholder-color:#6B6B6D;
+$text-color:#3E3C49;
+$white-color:#fff;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin for-laptop-up {
+    @media screen and (min-width:1000px) {
+        @content;
+    }
+}
