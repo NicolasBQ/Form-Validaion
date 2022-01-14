@@ -24,18 +24,19 @@
             </div>
 
             <div class="form-container width-100">
-                <form class="form">
+                <form class="form" novalidate>
                     <span class="label-text">Required *</span>
-                    <input type="text" required placeholder="Full Name" class="form__name form__input width-100">
+                    <input type="text" name="fullName" required placeholder="Full Name" class="form__name form__input width-100">
                     <span class="label-text">Required *</span>
-                    <input type="type" required placeholder="Email" class="form__email form__input width-100">
+                    <input type="email" pattern="[a-zA-Z0-9_.]+@[a-zA-Z.]+\.[a-zA-Z]+" required placeholder="Email" class="form__email form__input width-100">
                     <span class="label-text">Required *</span>
-                    <input type="password" required minlength="10" placeholder="Password" class="form__password form__input width-100">
+                    <input type="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\.])[A-Za-z\d@$!%*?&\.]{10,}$" placeholder="Password" class="form__password form__input width-100">
                     <div class="form__password--indications">
-                        <span class="form___password--indications-uppercase">At least ONE uppercase letter</span>
-                        <span class="form___password--indications-lowercase">At least ONE lowercase letter</span>
-                        <span class="form___password--indications-number">At least ONE number</span>
-                        <span class="form___password--indications-characters">At least 10 characters long</span>
+                        <span class="form__password--indications-uppercase">At least ONE uppercase letter</span>
+                        <span class="form__password--indications-lowercase">At least ONE lowercase letter</span>
+                        <span class="form__password--indications-number">At least ONE number</span>
+                        <span class="form__password--indications-special">At least one special character (@$!%*#?&.)</span>
+                        <span class="form__password--indications-characters">At least 10 characters long</span>
                     </div>
                     <span class="label-text">Required *</span>
                     <input type="password" required placeholder="Passsword Confirmation" class="form__confirmation form__input width-100">

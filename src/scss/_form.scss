@@ -52,6 +52,15 @@
         @include label-text;
     }
 
+    &__password--indications-success {
+        color: $success-color;
+    }
+
+    &__password--indications-invalid {
+        color: $primary-color;
+        text-align: right;
+    }
+
     &__submit {
         -webkit-appearance: none;
         padding: 1rem;
