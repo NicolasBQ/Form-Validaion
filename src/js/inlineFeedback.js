@@ -29,6 +29,7 @@ const successPassCondition = (target) => {
     target.classList.add('form__password--indications-success');
     return;
 } 
+
 const invalidPassCondition = (target) => {
     target.classList.remove('form__password--indications-success');
     target.classList.add('form__password--indications-invalid');

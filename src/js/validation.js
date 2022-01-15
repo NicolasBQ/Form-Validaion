@@ -1,10 +1,12 @@
 //Validation
+import { getElement } from "./index";
 import {  errorMessage, fullfitInput, successPassCondition, invalidPassCondition  } from "./inlineFeedback";
-import { successForm, invalidForm } from "./formFeedback";
+import { successForm } from "./firebase";
+import { conditions } from "./keyValidation";
 
-
+//Name Validation
 const nameValidation = () => {
-    let nameInput = document.querySelector('.form__name');
+    let nameInput = getElement('.form__name');
     let nextElement = nameInput.nextElementSibling;
     let name = false;
 
@@ -19,66 +21,30 @@ const nameValidation = () => {
     return name;
 } 
 
+//Email Validation Usign DoubleValidation Function
 const emailValidation = () => {
-    let emailInput = document.querySelector('.form__email');
-    let nextElement = emailInput.nextElementSibling;
-    let email = false;
-    if(!emailInput.validity.valueMissing) {
-        if(!emailInput.validity.patternMismatch) {
-            email = true;
-            fullfitInput(nextElement, emailInput);
-        } else {
-            email = false;
-            errorMessage(emailInput, 'The email is incorrect e.g example@email.com');
-        }
-    } else {
-        email = false;
-        errorMessage(emailInput);
-    }
-
-    return email;
+    let emailInput = getElement('.form__email');
+    return doubleValidation(emailInput, 'The email is incorrect e.g example@email.com');
 }
 
-const passwordValidation = (ev) => {
-    let passwordInput = document.querySelector('.form__password');
-    let nextElement = passwordInput.nextElementSibling;
-    let password = false;
-
-    if(!passwordInput.validity.valueMissing) {
-        if(!passwordInput.validity.patternMismatch) {
-            password = true;
-            fullfitInput(nextElement, passwordInput);
-        } else {
-            password = false;
-            errorMessage(passwordInput, '');
-        }
-    } else {
-        password = false;
-        errorMessage(passwordInput);
-    }
-
-    return password;
+//Password Validation Using DoubleValidation Function
+const passwordValidation = () => {
+    let passwordInput = getElement('.form__password');
+    return doubleValidation(passwordInput, '');
 }
 
+//Password Key up validation using keyValidation Module (Open principle)
 const passwordKeyValidation = (ev) => {
     let passwordInput = ev.target;
-    let uppercase = document.querySelector('.form__password--indications-uppercase');
-    let lowercase = document.querySelector('.form__password--indications-lowercase');
-    let number = document.querySelector('.form__password--indications-number');
-    let special = document.querySelector('.form__password--indications-special');
-    let characters = document.querySelector('.form__password--indications-characters');
-
-
-    passwordInput.value.match(/[A-Z]/) ? successPassCondition(uppercase) : invalidPassCondition(uppercase);
-    passwordInput.value.match(/[a-z]/) ? successPassCondition(lowercase) : invalidPassCondition(lowercase);
-    passwordInput.value.match(/[0-9]/) ? successPassCondition(number) : invalidPassCondition(number);
-    passwordInput.value.match(/[@$!%*#?&\.]/) ? successPassCondition(special) : invalidPassCondition(special);
-    passwordInput.value.length > 9 ? successPassCondition(characters) : invalidPassCondition(characters);
+    let passwordConditions = conditions(passwordInput);
+    passwordConditions.conditionsArr.forEach(condition => condition.isTrue ? successPassCondition(condition.object) : 
+    invalidPassCondition(condition.object));
 }
 
+//Password Confirmation Validation
 const confirmationValidation = () => {
-    let passwordInput = document.querySelector('.form__password');
-    let confirmationInput = document.querySelector('.form__confirmation');
+    let passwordInput = getElement('.form__password')
+    let confirmationInput = getElement('.form__confirmation');
     let nextElement = confirmationInput.nextElementSibling;
 
     let samePass = false;
@@ -98,12 +64,36 @@ const confirmationValidation = () => {
     return samePass;
 }
 
+//Double Validation Function
+const doubleValidation = (input, message) => {
+    let boolean = false;
+    let nextElement = input.nextElementSibling;
+    if(!input.validity.valueMissing) {
+        if(!input.validity.patternMismatch) {
+            boolean = true;
+            fullfitInput(nextElement, input);
+        } else {
+            boolean = false;
+            errorMessage(input, message);
+        }
+    } else {
+        boolean = false;
+        errorMessage(input);
+    }
+
+    return boolean;
+}
+
+//Submit Validation
 const formValidate = (ev) => {
     ev.preventDefault();
-    let inputsValidation = [nameValidation(), emailValidation(), passwordValidation(), confirmationValidation()];
-    
-    let inputError = inputsValidation.some(item => !item);
-
+    let inputsValidation = [
+        nameValidation(), 
+        emailValidation(), 
+        passwordValidation(), 
+        confirmationValidation()
+    ];
+    let inputError = inputsValidation.some(validation => !validation);
     inputError ? invalidForm() : successForm();
 }
 
@@ -111,8 +101,8 @@ export {
     nameValidation,
     emailValidation,
     passwordValidation,
-    passwordKeyValidation,
     confirmationValidation,
+    passwordKeyValidation,
     formValidate
 }
 

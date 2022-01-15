@@ -3,31 +3,24 @@ import { nameValidation, emailValidation, formValidate,passwordValidation, passw
 
 const appInit = () => {
     const inputs = document.getElementsByTagName('input');
-
     Array.from(inputs).forEach(input => input.value = '');
 
-    const form = document.querySelector('.form');
-    const name = document.querySelector('.form__name');
-    const email = document.querySelector('.form__email');
-    const password = document.querySelector('.form__password');
-    const passwordConfirmation = document.querySelector('.form__confirmation');
-
    //Events
+   getElement('.form__name').addEventListener('blur', nameValidation);
+   getElement('.form__email').addEventListener('blur', emailValidation);
+   getElement('.form__password').addEventListener('keyup', passwordKeyValidation);
+   getElement('.form__password').addEventListener('blur', passwordValidation);
+   getElement('.form__confirmation').addEventListener('blur', confirmationValidation);
+   getElement('form').addEventListener('submit', formValidate);
+}
 
-   name.addEventListener('blur', nameValidation);
-   email.addEventListener('blur', emailValidation);
-
-   password.addEventListener('keyup', passwordKeyValidation);
-   password.addEventListener('blur', passwordValidation);
-
-   passwordConfirmation.addEventListener('blur', confirmationValidation);
-
-   form.addEventListener('submit', formValidate)
+const getElement = (cl) => {
+    return document.querySelector(cl);
 }
 
 document.addEventListener('DOMContentLoaded', appInit);
 
-
-// Validar el formulario entero al enviarlo. (Refactorizar si es necesario). 
-// Feedback del formulario con SVG.
+export {
+    getElement
+}
 
