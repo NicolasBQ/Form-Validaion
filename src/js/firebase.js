@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import { getElement } from ".";
+import { mediaSizes } from './formFeedback';
 
 //Initialize Firebase
 const firebaseConfig = {
@@ -31,12 +32,30 @@ const saveData = async (name, email, password) => {
             email,
             password
         });
-        console.log(name);
+        mediaSizes();
     } catch(e) {
         console.log('ERROR');
     }
 }
 
+const invalidForm = () => {
+    let form = getElement('form');
+    if(form.parentNode.firstElementChild.dataset.error) return;
+
+    let errorForm = document.createElement('span');
+    errorForm.classList.add('form__error');
+    errorForm.classList.add('text-center');
+    errorForm.classList.add('radius-12');
+    errorForm.innerText = 'Validation error found';
+    errorForm.dataset.error = 'invalidForm';
+    form.parentNode.insertBefore(errorForm, form);
+
+    let errorDisabled = setTimeout(() => {
+        errorForm.remove();
+    }, 2000)
+}
+
 export {
     successForm,
+    invalidForm
 }

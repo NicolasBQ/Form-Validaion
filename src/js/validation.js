@@ -1,7 +1,7 @@
 //Validation
 import { getElement } from "./index";
 import {  errorMessage, fullfitInput, successPassCondition, invalidPassCondition  } from "./inlineFeedback";
-import { successForm } from "./firebase";
+import { successForm, invalidForm } from "./firebase";
 import { conditions } from "./keyValidation";
 
 //Name Validation

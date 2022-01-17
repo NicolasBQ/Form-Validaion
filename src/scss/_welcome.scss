@@ -1,0 +1,40 @@
+.welcome {
+    display: none;
+    transform: scale(0);
+    &__title {
+        margin-bottom: 1rem;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    &__text {
+        color: $text-color;
+
+        &-trial {
+            color: $success-color;
+        }
+    }
+
+    &__name {
+        color: $success-color;
+    }
+}
+
+.svg {
+    width: 100%;
+    height: 300px;
+}
+
+#arm {
+    animation: arm 0.8s linear infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes arm {
+    0% {
+        transform: rotate(10deg) translateY(0.5rem);
+    }
+    100% {
+        transform: rotate(-10deg);
+    }
+}

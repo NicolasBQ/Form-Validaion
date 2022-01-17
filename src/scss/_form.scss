@@ -3,6 +3,7 @@
     background-color: $white-color;
     padding: 2rem 1.5rem;
     border-radius: 1.5rem;
+    transition: height 1s ease-in-out;
 }
 
 .form {
@@ -46,6 +47,14 @@
             text-align: right;
         }
 
+    }
+
+    &__error {
+        display: block;
+        background-color: $primary-color;
+        color: $white-color;
+        opacity: 1;
+        padding: 1rem;
     }
 
     &__password--indications > * {
