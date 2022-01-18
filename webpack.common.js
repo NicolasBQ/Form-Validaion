@@ -2,13 +2,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/js/index.js',
+    entry: {
+      index: './src/js/index.js',
+      validation: './src/js/validation.js',
+      keyValidation: './src/js/keyValidation.js',
+      inlineFeedback: './src/js/inlineFeedback.js',
+      formFeedback: './src/js/formFeedback.js',
+      firebase: './src/js/firebase.js'
+    }, 
     output: {
-        filename:'main.js',
+        filename:'[name].bundle.js',
         path:path.resolve(__dirname, 'dist'),
     },
-    devtool:'inline-source-map',
     module: {
         rules: [ 
             {
